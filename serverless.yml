@@ -3,7 +3,7 @@
 # For full config options, check the docs:
 #    docs.serverless.com
 
-service: pytorch-serverless
+service: pytorch-serverless-lm
 
 # You can pin your service to only deploy with a specific Serverless version
 frameworkVersion: ">=1.27.1"
@@ -13,7 +13,7 @@ provider:
   name: aws
   runtime: python3.6
   stage: dev
-  region: us-west-2
+  region: us-east-1
   profile: slsadmin
   memorySize: 2048
   timeout: 120
@@ -24,10 +24,9 @@ provider:
 
   # you can define service wide environment variables here
   environment:
-    BUCKET_NAME: pytorch-serverless
-    STATE_DICT_NAME: dogscats-resnext50.h5
-    IMAGE_SIZE: 224
-    IMAGE_STATS: ([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    BUCKET_NAME: pytorch-serverless-lm
+    STATE_DICT_NAME: clas_2.h5
+    ITOS_NAME: itos.pkl
     LABELS_PATH: lib/labels.txt
 
   # you can define custom configuration variables here
@@ -82,5 +81,5 @@ functions:
           request:
             parameters:
               querystrings:
-                image_url: true
+                text: true
                 top_k: false

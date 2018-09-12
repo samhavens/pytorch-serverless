@@ -15,6 +15,7 @@
     sls plugin install -n serverless-python-requirements
     ```
 
+Note on requirements: though this depends on the fastai library, we can't pull it in via `requirements.txt`, because it is too heavy. It pulls in like, every library ever. Hopefully that's fixed in 1.0. So, instead we copy and paste :cry:
 
 ## Configuration
 
@@ -22,8 +23,10 @@
  
 - Define your class labels in `lib/labels.txt` with one label per line, for example:
     ```
-    cat
-    dog
+    smalltalk.hi
+    prompt.handoff
+    disable.handoff
+    ...
     ```
     
 - Setup an [AWS CLI profile](https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html) if you 

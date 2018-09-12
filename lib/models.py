@@ -1,5 +1,10 @@
+try:
+	import unzip_requirements
+except ImportError:
+	pass
+
 import collections
-from .utils import get_labels
+from .utils import download_file, get_labels
 
 import json
 import os
@@ -9,10 +14,13 @@ import numpy as np
 from fastai.lm_rnn import get_rnn_classifier
 
 CLASSES = get_labels(os.environ['LABELS_PATH'])
+BUCKET_NAME = os.environ['BUCKET_NAME']
 ITOS_NAME = os.environ['ITOS_NAME']
 
 def classification_model(**kwargs):
-	with open(ITOS_NAME, 'rb') as pickle_file:
+	file_path = f'/tmp/{ITOS_NAME}'
+	download_file(BUCKET_NAME, ITOS_NAME, file_path)
+	with open(file_path, 'rb') as pickle_file:
 		itos = pickle.load(pickle_file)
 
 	# these magic numbers are from the IMDB notebook (fastai class 2 course 10)

@@ -1,3 +1,4 @@
+boto3>=1.9.2
 numpy>=1.14
 http://download.pytorch.org/whl/cpu/torch-0.3.1-cp36-cp36m-linux_x86_64.whl
 urllib3>=1.22

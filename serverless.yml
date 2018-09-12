@@ -14,7 +14,7 @@ provider:
   runtime: python3.6
   stage: dev
   region: us-east-1
-  profile: SamHavens
+  profile: default
   memorySize: 2048
   timeout: 120
   # you can define API keys to generate here

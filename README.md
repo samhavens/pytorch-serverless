@@ -68,7 +68,7 @@ profile can access and upload your state dictionary
             ### set this to your image normalization stats
             IMAGE_STATS: ([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
             ...
-         
+
         variables:
             ### set this to your api version
             api_version: v0.0.1
@@ -102,13 +102,13 @@ Return prediction for a single image.
 - **Headers**
     ```
     (required)
-    X-API-KEY=[string]   ### Your generated API Key
+    X-API-KEY=[string]   ### Your generated API Key - generated during deployment step
     ```
 
 - **URL Parameters**
     ```
     (required)
-    image_url=[url]   ### URL of image to classify
+    text=[string]   ### text to classify
     
     (optional)
     top_k=[integer]   ### Number of top results (default: 3)
@@ -118,18 +118,18 @@ Return prediction for a single image.
     ```
     {
         "predictions": [
-            {
-            
-              "label": "dog",
-              "log": -0.00004426980376592837,
-              "prob": 0.9999557137489319
-            },
-            {
-            
-              "label": "cat",
-              "log": -10.025229454040527,
-              "prob": 0.0000442688433395233
-            }
+            [
+              "smalltalk.hi",
+              0.8334459066390991
+            ],
+            [
+              "prompt.handoff",
+              0.08478788286447525
+            ],
+            [
+              "disable.handoff",
+              0.06767518073320389
+            ]
         ]
     }
     ```
